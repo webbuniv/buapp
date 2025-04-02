@@ -60,7 +60,7 @@ class _CoursesTabState extends State<CoursesTab> {
           coursesData = await _supabase
               .from('courses')
               .select('*')
-              .in_('id', courseIds);
+              .filter('id', 'in', courseIds);
         }
       } else if (widget.userRole == Constants.roleLecturer) {
         // For lecturers, get courses they teach

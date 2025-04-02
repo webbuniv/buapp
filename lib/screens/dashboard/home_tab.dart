@@ -12,7 +12,7 @@ import '../../screens/chatbot/chatbot_screen.dart';
 
 class HomeTab extends StatefulWidget {
   final String userRole;
-  
+
   const HomeTab({
     super.key,
     required this.userRole,
@@ -76,7 +76,7 @@ class _HomeTabState extends State<HomeTab> {
           .gte('event_date', DateTime.now().toIso8601String())
           .order('event_date')
           .limit(5);
-      
+    
       if (mounted) {
         setState(() {
           _userName = userData['full_name'] as String;
@@ -298,8 +298,8 @@ class _HomeTabState extends State<HomeTab> {
             ),
           );
         },
-        child: const Icon(Icons.chat_bubble_outline),
         tooltip: 'Chat with AI Assistant',
+        child: const Icon(Icons.chat_bubble_outline),
       ),
     );
   }

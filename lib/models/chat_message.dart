@@ -1,6 +1,7 @@
 class ChatMessage {
   final String id;
   final String senderId;
+  final String recipientId;
   final String content;
   final DateTime timestamp;
   final bool isRead;
@@ -8,6 +9,7 @@ class ChatMessage {
   ChatMessage({
     required this.id,
     required this.senderId,
+    required this.recipientId,
     required this.content,
     required this.timestamp,
     required this.isRead,
@@ -17,6 +19,7 @@ class ChatMessage {
     return ChatMessage(
       id: json['id'] as String,
       senderId: json['sender_id'] as String,
+      recipientId: json['recipient_id'] as String,
       content: json['content'] as String,
       timestamp: DateTime.parse(json['timestamp'] as String),
       isRead: json['is_read'] as bool,
@@ -27,6 +30,7 @@ class ChatMessage {
     return {
       'id': id,
       'sender_id': senderId,
+      'recipient_id': recipientId,
       'content': content,
       'timestamp': timestamp.toIso8601String(),
       'is_read': isRead,

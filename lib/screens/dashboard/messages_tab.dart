@@ -21,7 +21,8 @@ class _MessagesTabState extends State<MessagesTab> with SingleTickerProviderStat
   bool _isLoading = true;
   String _searchQuery = '';
   final _searchController = TextEditingController();
-  
+  late RealtimeChannel _channel;
+
   @override
   void initState() {
     super.initState();
@@ -31,34 +32,35 @@ class _MessagesTabState extends State<MessagesTab> with SingleTickerProviderStat
     // Subscribe to realtime updates
     _subscribeToChats();
   }
-  
+
   @override
   void dispose() {
     _tabController.dispose();
     _searchController.dispose();
-    _supabase.removeAllChannels();
+    _supabase.removeChannel(_channel);
     super.dispose();
   }
-  
+
   void _subscribeToChats() {
     final userId = _supabase.auth.currentUser!.id;
     
-    _supabase
-      .channel('public:messages')
-      .on(
-        RealtimeListenTypes.postgresChanges,
-        SupabaseRealtimePayload(
-          schema: 'public',
-          table: 'messages',
-          filter: 'recipient_id=eq.$userId',
-        ),
-        (payload, [ref]) {
-          _loadData();
-        },
-      )
-      .subscribe();
+    _channel = _supabase.channel('public:messages');
+    
+    _channel.onPostgresChanges(
+      event: PostgresChangeEvent.insert,
+      schema: 'public',
+      table: 'messages',
+      filter: PostgresChangeFilter(
+        type: PostgresChangeFilterType.eq,
+        column: 'recipient_id',
+        value: userId,
+      ),
+      callback: (payload) {
+        _loadData();
+      },
+    ).subscribe();
   }
-  
+
   Future<void> _loadData() async {
     setState(() {
       _isLoading = true;
@@ -102,13 +104,13 @@ class _MessagesTabState extends State<MessagesTab> with SingleTickerProviderStat
       }
     }
   }
-  
+
   void _filterItems(String query) {
     setState(() {
       _searchQuery = query.toLowerCase();
     });
   }
-  
+
   List<Chat> get _filteredChats {
     if (_searchQuery.isEmpty) {
       return _chats;
@@ -118,7 +120,7 @@ class _MessagesTabState extends State<MessagesTab> with SingleTickerProviderStat
       return chat.otherUserName.toLowerCase().contains(_searchQuery);
     }).toList();
   }
-  
+
   List<Profile> get _filteredContacts {
     if (_searchQuery.isEmpty) {
       return _contacts;

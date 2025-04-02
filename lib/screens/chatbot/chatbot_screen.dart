@@ -39,6 +39,7 @@ class _ChatbotScreenState extends State<ChatbotScreen> {
           ChatMessage(
             id: 'welcome',
             senderId: 'bot',
+            recipientId: 'user', // Add recipientId here
             content: 'Hello! I\'m your Bugema University assistant. How can I help you today?',
             timestamp: DateTime.now(),
             isRead: true,
@@ -96,6 +97,7 @@ class _ChatbotScreenState extends State<ChatbotScreen> {
     final userMessage = ChatMessage(
       id: DateTime.now().millisecondsSinceEpoch.toString(),
       senderId: userId,
+      recipientId: 'bot', // Add recipientId here
       content: message,
       timestamp: DateTime.now(),
       isRead: true,
@@ -126,6 +128,7 @@ class _ChatbotScreenState extends State<ChatbotScreen> {
       final botMessage = ChatMessage(
         id: DateTime.now().millisecondsSinceEpoch.toString(),
         senderId: 'bot',
+        recipientId: userId, // Add recipientId here
         content: botResponse,
         timestamp: DateTime.now(),
         isRead: true,
