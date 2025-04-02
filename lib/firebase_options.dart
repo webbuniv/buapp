@@ -47,18 +47,18 @@ class DefaultFirebaseOptions {
     apiKey: 'YOUR-WEB-API-KEY',
     appId: 'YOUR-WEB-APP-ID',
     messagingSenderId: 'YOUR-SENDER-ID',
-    projectId: 'YOUR-PROJECT-ID',
+    projectId: 'buapp-3ee30',
     authDomain: 'YOUR-AUTH-DOMAIN',
     storageBucket: 'YOUR-STORAGE-BUCKET',
     measurementId: 'YOUR-MEASUREMENT-ID',
   );
 
   static const FirebaseOptions android = FirebaseOptions(
-    apiKey: 'YOUR-ANDROID-API-KEY',
-    appId: 'YOUR-ANDROID-APP-ID',
-    messagingSenderId: 'YOUR-SENDER-ID',
-    projectId: 'YOUR-PROJECT-ID',
-    storageBucket: 'YOUR-STORAGE-BUCKET',
+    apiKey: 'AIzaSyDSP32R93ZeT8nVGIQrtBarsJKtvc8hd2E',
+    appId: '1:522867993069:android:ce81579290a9138da81fe4',
+    messagingSenderId: '522867993069',
+    projectId: 'buapp-3ee30',
+    storageBucket: 'buapp-3ee30.firebasestorage.app',
   );
 
   static const FirebaseOptions ios = FirebaseOptions(
