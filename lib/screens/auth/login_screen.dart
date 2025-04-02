@@ -1,11 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:supabase_flutter/supabase_flutter.dart';
-import 'package:bugema_university_app/screens/auth/register_screen.dart';
-import 'package:bugema_university_app/screens/auth/forgot_password_screen.dart';
-import 'package:bugema_university_app/screens/dashboard/dashboard_screen.dart';
-import 'package:bugema_university_app/utils/constants.dart';
-import 'package:bugema_university_app/widgets/custom_button.dart';
-import 'package:bugema_university_app/widgets/custom_text_field.dart';
+import './register_screen.dart';
+import './forgot_password_screen.dart';
+import '../dashboard/dashboard_screen.dart';
+import '../../utils/constants.dart';
+import '../../widgets/custom_button.dart';
+import '../../widgets/custom_text_field.dart';
 
 class LoginScreen extends StatefulWidget {
   const LoginScreen({super.key});

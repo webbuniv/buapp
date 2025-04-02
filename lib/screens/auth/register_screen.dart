@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:supabase_flutter/supabase_flutter.dart';
-import 'package:bugema_university_app/screens/auth/login_screen.dart';
-import 'package:bugema_university_app/utils/constants.dart';
-import 'package:bugema_university_app/widgets/custom_button.dart';
-import 'package:bugema_university_app/widgets/custom_text_field.dart';
+import '../../screens/auth/login_screen.dart';
+import '../../utils/constants.dart';
+import '../../widgets/custom_button.dart';
+import '../../widgets/custom_text_field.dart';
 
 class RegisterScreen extends StatefulWidget {
   const RegisterScreen({super.key});
